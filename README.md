@@ -33,3 +33,7 @@
 - 换肤，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=4144077&nid=Qc5t88JG4eP0
 
 - 头像，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=511522&nid=5Fc9qfsHJ8rR
+
+- 用户名输入，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=5073060&nid=0TjwWAPnJtH0
+
+- 密码输入，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=341365&nid=FF537esW99eG

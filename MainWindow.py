@@ -15,9 +15,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(900, 600)
-        MainWindow.setStyleSheet("border: none;")
+        MainWindow.setStyleSheet("QWidget{border-radius: 10px;}\n"
+"border: none;")
         self.BackGroundFrame = QtWidgets.QFrame(MainWindow)
         self.BackGroundFrame.setGeometry(QtCore.QRect(0, 0, 900, 600))
+        self.BackGroundFrame.setStyleSheet("border-radius: 0;")
         self.BackGroundFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.BackGroundFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.BackGroundFrame.setObjectName("BackGroundFrame")
@@ -182,7 +184,6 @@ class Ui_MainWindow(object):
         self.AvatarLabel.setGeometry(QtCore.QRect(40, 60, 40, 40))
         self.AvatarLabel.setText("")
         self.AvatarLabel.setObjectName("AvatarLabel")
-        self.AvatarLabel.setStyleSheet("border-image: url(./statics/imgs/avatar.png)")
         self.line = QtWidgets.QFrame(self.MenuFrame)
         self.line.setEnabled(True)
         self.line.setGeometry(QtCore.QRect(160, 75, 2, 20))
@@ -190,6 +191,25 @@ class Ui_MainWindow(object):
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.MoreMenuFrame = QtWidgets.QFrame(self.MenuFrame)
+        self.MoreMenuFrame.setEnabled(True)
+        self.MoreMenuFrame.setGeometry(QtCore.QRect(79, 35, 111, 60))
+        self.MoreMenuFrame.setStyleSheet("background-color: rgb(154, 209, 252);")
+        self.MoreMenuFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.MoreMenuFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.MoreMenuFrame.setObjectName("MoreMenuFrame")
+        self.ChangePassButton = QtWidgets.QPushButton(self.MoreMenuFrame)
+        self.ChangePassButton.setGeometry(QtCore.QRect(0, 0, 111, 30))
+        self.ChangePassButton.setStyleSheet(":hover{\n"
+" color: black;\n"
+"}")
+        self.ChangePassButton.setObjectName("ChangePassButton")
+        self.AboutButton = QtWidgets.QPushButton(self.MoreMenuFrame)
+        self.AboutButton.setGeometry(QtCore.QRect(0, 30, 111, 30))
+        self.AboutButton.setStyleSheet(":hover{\n"
+" color: black;\n"
+"}")
+        self.AboutButton.setObjectName("AboutButton")
         self.BodyFrame = QtWidgets.QFrame(self.BackGroundFrame)
         self.BodyFrame.setGeometry(QtCore.QRect(0, 120, 900, 480))
         self.BodyFrame.setStyleSheet("background-color: qradialgradient(spread:pad, cx:0, cy:1, radius:1.02262, fx:0, fy:1, stop:0 rgba(60, 86, 222, 255), stop:0.995025 rgba(138, 206, 253, 250));\n"
@@ -355,6 +375,8 @@ class Ui_MainWindow(object):
         self.UserButtonName.setText(_translate("MainWindow", "用户管理"))
         self.LoginButton.setText(_translate("MainWindow", "登录"))
         self.label.setText(_translate("MainWindow", "普通用户"))
+        self.ChangePassButton.setText(_translate("MainWindow", "修改密码"))
+        self.AboutButton.setText(_translate("MainWindow", "关于"))
         self.WarningLabel.setText(_translate("MainWindow", "您的电脑存在威胁,建议立即处理"))
         self.describe1.setText(_translate("MainWindow", "已保护您的电脑"))
         self.DaysLabel.setText(_translate("MainWindow", "17"))

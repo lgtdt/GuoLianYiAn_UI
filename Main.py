@@ -2,29 +2,10 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import MainWindow
+from RunLoginWindow import LoginFrame
+from RunResetPassWindow import ResetPassFrame
+from RunAboutWindow import AboutFrame
 import sys
-
-
-# class DraggableWindow(MainWindow):
-#     def __init__(self):
-#         super().__init__()
-#         self.setWindowFlags(Qt.FramelessWindowHint)
-#
-#         self.draggable = False
-#         self.offset = QPoint()
-#
-#     def mousePressEvent(self, event):
-#         if event.button() == Qt.LeftButton:
-#             self.draggable = True
-#             self.offset = event.pos()
-#
-#     def mouseMoveEvent(self, event):
-#         if self.draggable:
-#             self.move(event.globalPos() - self.offset)
-#
-#     def mouseReleaseEvent(self, event):
-#         if event.button() == Qt.LeftButton:
-#             self.draggable = False
 
 class IndexWindow(QWidget):
     def __init__(self):
@@ -38,17 +19,29 @@ class IndexWindow(QWidget):
         region = QRegion(polygon)
         self.setMask(region)
         # ----------------
+        self.init_ui()
 
         self.skinname = "origin"
         self.draggable = True
         self.offset = None
-        self.init_ui()
+        self.ifMoreMenuOpen = False
+
+        # 加载子页面
+        self.loginFrame = LoginFrame()
+        self.resetPassFrame = ResetPassFrame()
+        self.aboutFrame = AboutFrame()
+
     def init_ui(self):
         self.ui = MainWindow.Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.MoreMenuFrame.setVisible(False)
         self.ui.CloseButton.clicked.connect(self.CloseWindow)
         self.ui.MiniButtuon.clicked.connect(self.MinimizeWindow)
         self.ui.SkinButton.clicked.connect(self.ChangeSkin)
+        self.ui.LoginButton.clicked.connect(self.OpenLoginWindow)
+        self.ui.SetButtuon.clicked.connect(self.OpenMoreMenu)
+        self.ui.ChangePassButton.clicked.connect(self.OpenResetPassWindow)
+        self.ui.AboutButton.clicked.connect(self.OpenAboutWindow)
 
 
     def mousePressEvent(self, event):
@@ -94,6 +87,21 @@ class IndexWindow(QWidget):
                                              "    background-color: rgb(126, 216, 255);\n"
                                              "}")
             self.skinname = "origin"
+    def OpenLoginWindow(self):
+        self.loginFrame.show()
+
+    def OpenMoreMenu(self):
+        if not self.ifMoreMenuOpen:
+            self.ui.MoreMenuFrame.setVisible(True)
+            self.ifMoreMenuOpen = True
+        else:
+            self.ui.MoreMenuFrame.setVisible(False)
+            self.ifMoreMenuOpen = False
+
+    def OpenResetPassWindow(self):
+        self.resetPassFrame.show()
+    def OpenAboutWindow(self):
+        self.aboutFrame.show()
 
 
 
