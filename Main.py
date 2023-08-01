@@ -42,6 +42,7 @@ class IndexWindow(QWidget):
         self.ui.SetButtuon.clicked.connect(self.OpenMoreMenu)
         self.ui.ChangePassButton.clicked.connect(self.OpenResetPassWindow)
         self.ui.AboutButton.clicked.connect(self.OpenAboutWindow)
+        self.ui.ScanButton.clicked.connect(self.SwitchToResultFrame)
 
 
     def mousePressEvent(self, event):
@@ -102,6 +103,8 @@ class IndexWindow(QWidget):
         self.resetPassFrame.show()
     def OpenAboutWindow(self):
         self.aboutFrame.show()
+    def SwitchToResultFrame(self):
+        self.ui.ResultFrame.raise_()
 
 
 

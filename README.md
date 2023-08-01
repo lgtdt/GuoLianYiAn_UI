@@ -37,3 +37,5 @@
 - 用户名输入，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=5073060&nid=0TjwWAPnJtH0
 
 - 密码输入，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=341365&nid=FF537esW99eG
+
+- 对勾，来源：https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=236930&nid=NgD5XxlTg0xB
