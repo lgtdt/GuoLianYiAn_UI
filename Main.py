@@ -5,6 +5,7 @@ import MainWindow
 from RunLoginWindow import LoginFrame
 from RunResetPassWindow import ResetPassFrame
 from RunAboutWindow import AboutFrame
+from RunSysAdminWindow import SysAdminFrame
 import sys
 
 class IndexWindow(QWidget):
@@ -30,12 +31,19 @@ class IndexWindow(QWidget):
         self.loginFrame = LoginFrame()
         self.resetPassFrame = ResetPassFrame()
         self.aboutFrame = AboutFrame()
+        self.sysAdminFrame = SysAdminFrame()
+
+        # 自定义槽
+        self.loginFrame.close_MainWindow_signal.connect(self.CloseWindow)
+        self.sysAdminFrame.logoutBackToMainFrame_signal.connect(self.Test)
+
+
 
     def init_ui(self):
         self.ui = MainWindow.Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.MoreMenuFrame.setVisible(False)
-        self.ui.CloseButton.clicked.connect(self.CloseWindow)
+        self.ui.CloseButton.clicked.connect(self.QuitWindow)
         self.ui.MiniButtuon.clicked.connect(self.MinimizeWindow)
         self.ui.SkinButton.clicked.connect(self.ChangeSkin)
         self.ui.LoginButton.clicked.connect(self.OpenLoginWindow)
@@ -43,6 +51,9 @@ class IndexWindow(QWidget):
         self.ui.ChangePassButton.clicked.connect(self.OpenResetPassWindow)
         self.ui.AboutButton.clicked.connect(self.OpenAboutWindow)
         self.ui.ScanButton.clicked.connect(self.SwitchToResultFrame)
+
+
+
 
 
     def mousePressEvent(self, event):
@@ -57,9 +68,16 @@ class IndexWindow(QWidget):
         if event.button() == Qt.LeftButton:
             self.offset = None
 
+    def ShowWindow(self):
+        print("111")
+        self.show()
+    def Test(self):
+        print(333)
     # 关闭按钮的实现
-    def CloseWindow(self):
+    def QuitWindow(self):
         QApplication.quit()
+    def CloseWindow(self):
+        self.close()
 
     #最小化按钮的实现
     def MinimizeWindow(self):
@@ -89,6 +107,7 @@ class IndexWindow(QWidget):
                                              "}")
             self.skinname = "origin"
     def OpenLoginWindow(self):
+        # self.close()
         self.loginFrame.show()
 
     def OpenMoreMenu(self):
