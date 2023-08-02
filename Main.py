@@ -3,9 +3,12 @@ from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSi
 from PyQt5.QtGui import QPainterPath, QRegion
 import MainWindow
 from RunLoginWindow import LoginFrame
+from RunLogoutWindow import LogoutFrame
 from RunResetPassWindow import ResetPassFrame
 from RunAboutWindow import AboutFrame
 from RunSysAdminWindow import SysAdminFrame
+
+
 import sys
 
 class IndexWindow(QWidget):
@@ -26,17 +29,20 @@ class IndexWindow(QWidget):
         self.draggable = True
         self.offset = None
         self.ifMoreMenuOpen = False
+        self.logoutName = ""
 
         # 加载子页面
         self.loginFrame = LoginFrame()
+        self.logoutFrame = LogoutFrame()
         self.resetPassFrame = ResetPassFrame()
         self.aboutFrame = AboutFrame()
         self.sysAdminFrame = SysAdminFrame()
 
-        # 自定义槽
-        self.loginFrame.close_MainWindow_signal.connect(self.CloseWindow)
-        self.sysAdminFrame.logoutBackToMainFrame_signal.connect(self.Test)
 
+        # 自定义槽
+        self.loginFrame.login_singnal.connect(self.logToOtherWindow)
+        self.logoutFrame.logout_signal.connect(self.logout)
+        self.sysAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
 
 
     def init_ui(self):
@@ -68,11 +74,24 @@ class IndexWindow(QWidget):
         if event.button() == Qt.LeftButton:
             self.offset = None
 
-    def ShowWindow(self):
-        print("111")
+    def logToOtherWindow(self, name):
+        self.close()
+        if name == "SysAdmin":
+            self.sysAdminFrame.show()
+    def logout(self):
         self.show()
-    def Test(self):
-        print(333)
+        if self.logoutName == "SysAdmin":
+            self.sysAdminFrame.close()
+
+    def ShowWindow(self):
+        self.show()
+    def ShowSysAdminFrame(self):
+        self.sysAdminFrame.show()
+    def ShowLogoutFrame(self, name):
+        self.logoutFrame.show()
+        self.logoutName = name
+
+
     # 关闭按钮的实现
     def QuitWindow(self):
         QApplication.quit()

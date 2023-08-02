@@ -221,7 +221,7 @@ border: none;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="LoginButton">
+    <widget class="QPushButton" name="ConfirmButton">
      <property name="geometry">
       <rect>
        <x>140</x>

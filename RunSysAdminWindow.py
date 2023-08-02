@@ -2,15 +2,14 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import SysAdminWindow
-from RunResetPassWindow import ResetPassFrame
-from RunAboutWindow import AboutFrame
+
 import sys
 
 
 class SysAdminFrame(QWidget):
 
     #自定义信号
-    logoutBackToMainFrame_signal = pyqtSignal()
+    show_logoutFrame_signal = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
@@ -32,8 +31,10 @@ class SysAdminFrame(QWidget):
         self.ui.SysSetFrame.setVisible(False)
         self.ui.AuthorizeRightFrame.setVisible(False)
 
-        self.resetPassFrame = ResetPassFrame()
-        self.aboutFrame = AboutFrame()
+
+
+        #自定义槽
+
 
     def init_ui(self):
         self.ui = SysAdminWindow.Ui_SysAdminWindow()
@@ -45,7 +46,8 @@ class SysAdminFrame(QWidget):
         self.ui.SysSetButton.clicked.connect(self.ShowSysSetFrame)
         self.ui.ScanSetButton.clicked.connect(self.ShowScanSetFrame)
         self.ui.AuthorizeSetButton.clicked.connect(self.ShowAuthorizeSetFrame)
-        self.ui.LogoutButton.clicked.connect(self.LogoutBackToMainFrame)
+        self.ui.LogoutButton.clicked.connect(self.ShowLogoutFrame)
+
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.draggable:
@@ -117,11 +119,11 @@ class SysAdminFrame(QWidget):
         self.ui.SacnSetRightFrame.raise_()
         self.ui.AuthorizeRightFrame.setVisible(True)
 
-    def LogoutBackToMainFrame(self):
-        print(222)
-        self.logoutBackToMainFrame_signal.emit()
-        print(444)
+    def ShowLogoutFrame(self):
+        self.show_logoutFrame_signal.emit("SysAdmin")
 
+    def ShowWindow(self):
+        self.show()
     def CloseWindow(self):
         self.close()
 

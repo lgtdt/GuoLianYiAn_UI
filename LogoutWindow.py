@@ -87,13 +87,13 @@ class Ui_LogoutWindow(object):
         self.PasswordIcon.setPixmap(QtGui.QPixmap("./statics/imgs/passinput.png"))
         self.PasswordIcon.setScaledContents(True)
         self.PasswordIcon.setObjectName("PasswordIcon")
-        self.LoginButton = QtWidgets.QPushButton(self.BodyFrame)
-        self.LoginButton.setGeometry(QtCore.QRect(140, 220, 100, 32))
+        self.ConfirmButton = QtWidgets.QPushButton(self.BodyFrame)
+        self.ConfirmButton.setGeometry(QtCore.QRect(140, 220, 100, 32))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.LoginButton.setFont(font)
-        self.LoginButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.LoginButton.setStyleSheet("QPushButton{\n"
+        self.ConfirmButton.setFont(font)
+        self.ConfirmButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.ConfirmButton.setStyleSheet("QPushButton{\n"
 "    border: none;\n"
 "    border-radius: 15;\n"
 "    background-color: rgb(43, 128, 247);\n"
@@ -104,7 +104,7 @@ class Ui_LogoutWindow(object):
 "\n"
 "\n"
 "")
-        self.LoginButton.setObjectName("LoginButton")
+        self.ConfirmButton.setObjectName("ConfirmButton")
         self.MessageLabel = QtWidgets.QLabel(self.BodyFrame)
         self.MessageLabel.setGeometry(QtCore.QRect(40, 160, 291, 16))
         self.MessageLabel.setStyleSheet("color: red;")
@@ -127,6 +127,6 @@ class Ui_LogoutWindow(object):
         self.TitleLabel.setText(_translate("LogoutWindow", "国联恶意代码辅助监测系统"))
         self.VersionLabel.setText(_translate("LogoutWindow", "   主机版"))
         self.PasswordInput.setPlaceholderText(_translate("LogoutWindow", "密码"))
-        self.LoginButton.setText(_translate("LogoutWindow", "确认"))
+        self.ConfirmButton.setText(_translate("LogoutWindow", "确认"))
         self.MessageLabel.setText(_translate("LogoutWindow", "MessageLabel"))
         self.label.setText(_translate("LogoutWindow", "确认密码"))

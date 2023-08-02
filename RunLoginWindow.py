@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSi
 from PyQt5.QtGui import QPainterPath, QRegion
 import LoginWindow
 
-from RunSysAdminWindow import SysAdminFrame
+
 from Tools import md5_encrypt
 import sys
 
@@ -11,6 +11,8 @@ import sys
 class LoginFrame(QWidget):
     # 信号
     close_MainWindow_signal = pyqtSignal()
+    show_SysAdminFrame_signal = pyqtSignal()
+    login_singnal = pyqtSignal(str)
 
 
     def __init__(self):
@@ -31,8 +33,8 @@ class LoginFrame(QWidget):
 
 
 
-        #加载其他界面
-        self.sysAdminFrame = SysAdminFrame()
+
+
 
 
     def init_ui(self):
@@ -47,9 +49,9 @@ class LoginFrame(QWidget):
         self.ui.PasswordInput.setText("")
         self.close()
     def LoginFunc(self):
-        self.close_MainWindow_signal.emit()
+        self.login_singnal.emit("SysAdmin")
         self.close()
-        self.sysAdminFrame.show()
+
 
         # self.ui.MessageLabel1.setVisible(False)
         # self.ui.MessageLabel2.setVisible(False)
