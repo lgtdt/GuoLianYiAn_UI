@@ -43,6 +43,7 @@ class LogoutFrame(QWidget):
 
     def CloseWindow(self):
         self.ui.PasswordInput.setText("")
+        self.ui.MessageLabel.setVisible(False)
         self.close()
 
     def LogoutFunc(self):

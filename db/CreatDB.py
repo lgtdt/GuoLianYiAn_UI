@@ -17,10 +17,10 @@ def CreatDB():
                     start_time INTEGER
                 )''')
     users_init_data = [
-        ("Admin", "普通用户", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
-        ("SysAdmin", "系统管理员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
-        ("SecAdmin", "安全保密管理员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
-        ("AuditAdmin", "安全审计员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
+        ("admin", "普通用户", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
+        ("sysadmin", "系统管理员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
+        ("secadmin", "安全保密管理员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
+        ("auditadmin", "安全审计员", "e10adc3949ba59abbe56e057f20f883e", 0, 0, 0, 0),
     ]
     cur.executemany(''' INSERT INTO user_manager (user_name, role_name, passwd, locked, lock_time, err_time, start_time)
                         VALUES (?, ?, ?, ?, ?, ?, ?)''', users_init_data)
@@ -28,5 +28,4 @@ def CreatDB():
     conn.commit()
     conn.close()
 
-CreatDB()
 

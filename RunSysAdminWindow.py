@@ -120,7 +120,7 @@ class SysAdminFrame(QWidget):
         self.ui.AuthorizeRightFrame.setVisible(True)
 
     def ShowLogoutFrame(self):
-        self.show_logoutFrame_signal.emit("SysAdmin")
+        self.show_logoutFrame_signal.emit("sysadmin")
 
     def ShowWindow(self):
         self.show()

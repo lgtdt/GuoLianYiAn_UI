@@ -7,7 +7,10 @@ from RunLogoutWindow import LogoutFrame
 from RunResetPassWindow import ResetPassFrame
 from RunAboutWindow import AboutFrame
 from RunSysAdminWindow import SysAdminFrame
+from RunSecAdminWindow import SecAdminFrame
+from RunAuditAdminWindow import AuditAdminFrame
 
+from db.CreatDB import CreatDB
 
 import sys
 
@@ -37,12 +40,16 @@ class IndexWindow(QWidget):
         self.resetPassFrame = ResetPassFrame()
         self.aboutFrame = AboutFrame()
         self.sysAdminFrame = SysAdminFrame()
+        self.secAdminFrame = SecAdminFrame()
+        self.auditAdminFrame = AuditAdminFrame()
 
 
         # 自定义槽
         self.loginFrame.login_singnal.connect(self.logToOtherWindow)
         self.logoutFrame.logout_signal.connect(self.logout)
         self.sysAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
+        self.secAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
+        self.auditAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
 
 
     def init_ui(self):
@@ -58,10 +65,6 @@ class IndexWindow(QWidget):
         self.ui.AboutButton.clicked.connect(self.OpenAboutWindow)
         self.ui.ScanButton.clicked.connect(self.SwitchToResultFrame)
 
-
-
-
-
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.draggable:
             self.offset = event.pos()
@@ -75,28 +78,33 @@ class IndexWindow(QWidget):
             self.offset = None
 
     def logToOtherWindow(self, name):
+        self.loginFrame.ui.MessageLabel1.setVisible(False)
+        self.loginFrame.ui.MessageLabel2.setVisible(False)
+        self.loginFrame.ui.UserNameInput.setText("")
+        self.loginFrame.ui.PasswordInput.setText("")
         self.close()
-        if name == "SysAdmin":
+        if name == "sysadmin":
             self.sysAdminFrame.show()
-    def logout(self):
-        self.show()
-        if self.logoutName == "SysAdmin":
-            self.sysAdminFrame.close()
-
-    def ShowWindow(self):
-        self.show()
-    def ShowSysAdminFrame(self):
-        self.sysAdminFrame.show()
+        elif name == "secadmin":
+            self.secAdminFrame.show()
+        elif name == "auditadmin":
+            self.auditAdminFrame.show()
     def ShowLogoutFrame(self, name):
+        self.logoutFrame.ui.PasswordInput.setText("")
+        self.logoutFrame.ui.MessageLabel.setVisible(False)
         self.logoutFrame.show()
         self.logoutName = name
-
-
+    def logout(self):
+        self.show()
+        if self.logoutName == "sysadmin":
+            self.sysAdminFrame.close()
+        if self.logoutName == "secadmin":
+            self.secAdminFrame.close()
+        if self.logoutName == "auditadmin":
+            self.auditAdminFrame.close()
     # 关闭按钮的实现
     def QuitWindow(self):
         QApplication.quit()
-    def CloseWindow(self):
-        self.close()
 
     #最小化按钮的实现
     def MinimizeWindow(self):
@@ -154,4 +162,5 @@ if __name__ == '__main__':
     indexWindow = IndexWindow()
     indexWindow.setWindowFlags(Qt.FramelessWindowHint)
     indexWindow.show()
+    #CreatDB()
     sys.exit(app.exec_())
