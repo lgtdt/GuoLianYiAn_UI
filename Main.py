@@ -10,7 +10,6 @@ from RunSysAdminWindow import SysAdminFrame
 from RunSecAdminWindow import SecAdminFrame
 from RunAuditAdminWindow import AuditAdminFrame
 
-from db.CreatDB import CreatDB
 
 import sys
 
@@ -162,5 +161,4 @@ if __name__ == '__main__':
     indexWindow = IndexWindow()
     indexWindow.setWindowFlags(Qt.FramelessWindowHint)
     indexWindow.show()
-    #CreatDB()
     sys.exit(app.exec_())
