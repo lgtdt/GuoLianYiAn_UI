@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget,QHeaderView
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import AuditAdminWindow
@@ -28,8 +28,7 @@ class AuditAdminFrame(QWidget):
         self.ifMoreMenuOpen = False
 
         self.setWindowFlags(Qt.FramelessWindowHint)
-        self.ui.SysSetFrame.setVisible(False)
-        self.ui.AuthorizeRightFrame.setVisible(False)
+
 
 
 
@@ -39,6 +38,9 @@ class AuditAdminFrame(QWidget):
     def init_ui(self):
         self.ui = AuditAdminWindow.Ui_AuditAdminWindow()
         self.ui.setupUi(self)
+        self.ui.LogTableWidget.setColumnCount(5)
+        self.ui.LogTableWidget.setHorizontalHeaderLabels(["ID", "用户", "时间", "事件", "事件描述"])
+        self.ui.LogTableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.ui.MoreMenuFrame.setVisible(False)
         self.ui.CloseButton.clicked.connect(self.CloseWindow)
         self.ui.SetButtuon.clicked.connect(self.OpenMoreMenu)

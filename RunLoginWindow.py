@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import LoginWindow
-from db.UserManager_Function import GetPasswd, IsUserLocked, WrongPassFunc, UnLockUser
+from db.UserManager_Function import GetPasswd, IsUserLocked, WrongPassFunc, UnLockUser, LoginSuccess
 from Tools import md5_encrypt, if_Passwd_Right
 import time
 from threading import Thread
@@ -109,11 +109,12 @@ class LoginFrame(QWidget):
                 true_passwd = GetPasswd("sysadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
                     self.login_singnal.emit("sysadmin")
+                    LoginSuccess("sysadmin")
                     self.close()
                 else:
                     WrongPassFunc("sysadmin")
                     self.ui.MessageLabel2.setVisible(True)
-                    self.ui.MessageLabel2.setText("密码不正确")
+                    self.ui.MessageLabel2.setText("用户名或密码不正确")
 
         elif user_name == "secadmin":
             if IsUserLocked("secadmin") != False:
@@ -130,11 +131,12 @@ class LoginFrame(QWidget):
                 true_passwd = GetPasswd("secadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
                     self.login_singnal.emit("secadmin")
+                    LoginSuccess("secadmin")
                     self.close()
                 else:
                     WrongPassFunc("secadmin")
                     self.ui.MessageLabel2.setVisible(True)
-                    self.ui.MessageLabel2.setText("密码不正确")
+                    self.ui.MessageLabel2.setText("用户名或密码不正确")
 
         elif user_name == "auditadmin":
             if IsUserLocked("auditadmin") != False:
@@ -152,14 +154,15 @@ class LoginFrame(QWidget):
                 true_passwd = GetPasswd("auditadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
                     self.login_singnal.emit("auditadmin")
+                    LoginSuccess("auditadmin")
                     self.close()
                 else:
                     WrongPassFunc("auditadmin")
                     self.ui.MessageLabel2.setVisible(True)
-                    self.ui.MessageLabel2.setText("密码不正确")
+                    self.ui.MessageLabel2.setText("用户名或密码不正确")
         else:
             self.ui.MessageLabel1.setVisible(True)
-            self.ui.MessageLabel1.setText("请输入正确的用户名")
+            self.ui.MessageLabel1.setText("用户名或密码不正确")
 
 
 

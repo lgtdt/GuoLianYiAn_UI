@@ -26,7 +26,23 @@ def CreatDB():
     ]
     cur.executemany(''' INSERT INTO user_manager (user_name, role_name, passwd, locked, lock_time, err_time, start_time)
                                 VALUES (?, ?, ?, ?, ?, ?, ?)''', users_init_data)
+    # -------- optr_logs 数据表 --------
+    cur.execute(''' CREATE TABLE IF NOT EXISTS optr_logs(
+                        log_id INT PRIMARY KEY,
+                        time_stamp INT,
+                        operate_type INT,
+                        user_name VARCHAR(10),
+                        role_name VARCHAR(15),
+                        operate_value VARCHAR(15),
+                        operate_result VARCHAR(15)
+                    );''')
+    logs_init_data = [
+        (100000, 100000, 1, "admin", "普通用户", "扫描", "成功"),
+        (100001, 100001, 2, "sysadmin", "系统管理员", "登录", "成功"),
 
+    ]
+    cur.executemany(''' INSERT INTO optr_logs (log_id, time_stamp, operate_type, user_name, role_name, operate_value, operate_result)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)''', logs_init_data)
 
     conn.commit()
     conn.close()
