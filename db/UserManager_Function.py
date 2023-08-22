@@ -73,6 +73,24 @@ def UnLockUser(user_name):
     conn.commit()
     conn.close()
 
+def LoginSuccess(user_name):
+    conn = sqlite3.connect("./db/DataBase.db")
+    cur = conn.cursor()
+    #登陆成功 添加日志
+    cur.execute("SELECT COUNT(*) FROM optr_logs")
+    len = cur.fetchone()[0]
+    log_id = 100000 + len
+    cur.execute("SELECT role_name FROM user_manager WHERE user_name = ?", (user_name,))
+    role_name = cur.fetchone()[0]
+    log_data = [
+        (log_id, time.time(), 1, user_name, role_name, "登录", role_name+"成功登录"),
+    ]
+    cur.executemany(''' INSERT INTO optr_logs (log_id, time_stamp, operate_type, user_name, role_name, operate_value, operate_result)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)''', log_data)
+    conn.commit()
+    conn.close()
+
+
 
 
 
