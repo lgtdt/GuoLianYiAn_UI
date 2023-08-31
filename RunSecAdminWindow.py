@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QHeaderView, QMessageBox
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import SecAdminWindow
 from db.optr_logs_Function import GetLogs
+from db.password_policy_Function import Save_Password_Policy, Get_Password_Policy
 from Tools import GetTimeFromTimeStamp
 
 import sys
@@ -53,6 +54,7 @@ class SecAdminFrame(QWidget):
         self.ui.UserButton.clicked.connect(self.ShowUserFrame)
         self.ui.LogButton.clicked.connect(self.ShowLogFrame)
         self.ui.SysSetButton.clicked.connect(self.ShowSysSetFrame)
+        self.ui.SaveButton.clicked.connect(self.SavePassPolicy)
 
 
     def mousePressEvent(self, event):
@@ -166,6 +168,19 @@ class SecAdminFrame(QWidget):
         
         self.ui.LogTableWidget.setRowCount(len(results))
 
+        self.ui.LogTableWidget.setStyleSheet("""
+                QTableWidget {
+                    border: none; /* 移除表格整体边框 */
+                }
+                QTableWidget QHeaderView::section {
+                    background-color: blue;
+                    }
+               QTableWidget::item {
+                border: none; /* 移除单元格边框 */
+                padding: 5px;
+            }
+                """)
+
         for row_idx, row_data in enumerate(results):
             for col_idx, col_data in enumerate(row_data):
                 if col_idx == 2:
@@ -180,6 +195,14 @@ class SecAdminFrame(QWidget):
 
     def ShowSysSetFrame(self):
         self.ui.MimaSetFrame.raise_()
+        policy_dict = Get_Password_Policy()
+        self.ui.upper_num.setText(str(policy_dict[0]))
+        self.ui.lower_num.setText(str(policy_dict[1]))
+        self.ui.symbol_num.setText(str(policy_dict[2]))
+        self.ui.digit_num.setText(str(policy_dict[3]))
+        self.ui.min_len_num.setText(str(policy_dict[4]))
+        self.ui.pass_change_time.setText(str(policy_dict[5]))
+        self.ui.wrong_time.setText(str(policy_dict[6]))
         self.ui.SysSetButton.setStyleSheet("QPushButton{\n"
                                         "background-color: qlineargradient(spread:pad, x1:0.985075, y1:1, x2:1, y2:0, stop:0 rgba(118, 180, 242, 255), stop:1 rgba(167, 203, 240, 255));\n"
                                         "}\n"
@@ -200,6 +223,25 @@ class SecAdminFrame(QWidget):
                                            "}")
     def ShowLogoutFrame(self):
         self.show_logoutFrame_signal.emit("secadmin")
+
+
+    def SavePassPolicy(self):
+        policy_dict = {}
+        policy_dict['upper_num'] = int(self.ui.upper_num.text())
+        policy_dict['lower_num'] = int(self.ui.lower_num.text())
+        policy_dict['symbol_num'] = int(self.ui.symbol_num.text())
+        policy_dict['digit_num'] = int(self.ui.digit_num.text())
+        policy_dict['min_len_num'] = int(self.ui.min_len_num.text())
+        policy_dict['passwd_limit'] = int(self.ui.pass_change_time.text())
+        policy_dict['err_num'] = int(self.ui.wrong_time.text())
+
+        result = Save_Password_Policy(policy_dict)
+        if result == "success":
+            QMessageBox.information(self, "Success", "保存成功!")
+        else:
+            QMessageBox.critical(self, "Error", f"Error updating record: {result}")
+
+
 
     def ShowWindow(self):
         self.show()

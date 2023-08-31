@@ -24,6 +24,13 @@ def GetTimeFromTimeStamp(time_stamp):
     result = f"{year}-{month:02d}-{day:02d}-{hour:02d}:{minute:02d}:{second:02d}"
     return result
 
+def CheckConfig():
+    if not os.path.exists('./config.ini'):
+        return "Could not find the config file.Please check."
+    else:
+        return "success"
+
+
 def execute_Command_Realtime(command):
     try:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, text=True)

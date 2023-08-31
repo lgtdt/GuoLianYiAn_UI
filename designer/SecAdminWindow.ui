@@ -1691,7 +1691,7 @@ border-radius: 20;</string>
         <string>大写字母个数：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="upper_num">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1709,8 +1709,11 @@ border-radius: 20;</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_8">
@@ -1734,7 +1737,7 @@ color: rgb(0, 0, 0);</string>
         <string>小写字母个数：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lower_num">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1752,8 +1755,11 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_9">
@@ -1777,7 +1783,7 @@ color: rgb(0, 0, 0);</string>
         <string>特殊符号个数：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="symbol_num">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1795,8 +1801,11 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
@@ -1820,7 +1829,7 @@ color: rgb(0, 0, 0);</string>
         <string>数字个数：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_7">
+      <widget class="QLineEdit" name="digit_num">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1838,8 +1847,11 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_30">
@@ -1926,7 +1938,7 @@ color: rgb(0, 0, 0);</string>
         <string>锁定时间：</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_16">
+      <widget class="QLineEdit" name="min_len_num">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1944,11 +1956,14 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
        </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_17">
+      <widget class="QLineEdit" name="pass_change_time">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1966,11 +1981,14 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
        </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_18">
+      <widget class="QLineEdit" name="wrong_time">
        <property name="geometry">
         <rect>
          <x>210</x>
@@ -1988,8 +2006,11 @@ color: rgb(0, 0, 0);</string>
         <string notr="true">background-color: rgb(189, 189, 189);
 color: rgb(0, 0, 0);</string>
        </property>
-       <property name="placeholderText">
+       <property name="text">
         <string>1</string>
+       </property>
+       <property name="placeholderText">
+        <string/>
        </property>
       </widget>
       <widget class="QLabel" name="label_50">
@@ -2446,8 +2467,8 @@ border-radius: 100;</string>
    <zorder>UserFrame</zorder>
    <zorder>SecToolsFrame</zorder>
    <zorder>LogFrame</zorder>
-   <zorder>MimaSetFrame</zorder>
    <zorder>KillFrame</zorder>
+   <zorder>MimaSetFrame</zorder>
   </widget>
  </widget>
  <resources/>
