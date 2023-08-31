@@ -44,6 +44,25 @@ def CreatDB():
     cur.executemany(''' INSERT INTO optr_logs (log_id, time_stamp, operate_type, user_name, role_name, operate_value, operate_result)
                                     VALUES (?, ?, ?, ?, ?, ?, ?)''', logs_init_data)
 
+    # -------- password_policy 数据表 --------
+    cur.execute(''' CREATE TABLE IF NOT EXISTS password_policy(
+                            pp_id INT PRIMARY KEY,
+                            upper_num INT,
+                            lower_num INT,
+                            symbol_num INT,
+                            digit_num INT,
+                            min_len_num INT,
+                            passwd_limit INT,
+                            err_num INT,
+                            lock_time INT
+                        );''')
+    pass_init_data = [
+        (1, 1, 1, 1, 1, 8, 30, 5, 30),
+    ]
+    cur.executemany(''' INSERT INTO password_policy (pp_id, upper_num, lower_num, symbol_num, digit_num, min_len_num, passwd_limit, err_num, lock_time)
+                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', pass_init_data)
+
+
     conn.commit()
     conn.close()
     print("表创建成功！")

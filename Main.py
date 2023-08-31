@@ -1,6 +1,6 @@
 import time
 
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import MainWindow
@@ -13,7 +13,7 @@ from RunSecAdminWindow import SecAdminFrame
 from RunAuditAdminWindow import AuditAdminFrame
 
 
-from Tools import GetTimeFromTimeStamp
+from Tools import GetTimeFromTimeStamp, CheckConfig
 from db.optr_logs_Function import GetLogs
 
 import sys
@@ -38,6 +38,7 @@ class IndexWindow(QWidget):
         self.setMask(region)
         # ----------------
         self.init_ui()
+        self.CheckConfigFile()
 
         #一些全局变量
         self.skinname = "origin"
@@ -93,6 +94,8 @@ class IndexWindow(QWidget):
         self.ui.CancelScanButton.clicked.connect(self.BlockThread)
 
 
+
+
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.draggable:
             self.offset = event.pos()
@@ -104,6 +107,17 @@ class IndexWindow(QWidget):
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.offset = None
+
+    def CheckConfigFile(self):
+        result = CheckConfig()
+        if result != "success":
+            msg_box = QMessageBox()
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setWindowTitle('Error')
+            msg_box.setText(result)
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            # 显示信息框
+            msg_box.exec_()
 
     def logToOtherWindow(self, name):
         self.loginFrame.ui.MessageLabel1.setVisible(False)
