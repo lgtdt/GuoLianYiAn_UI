@@ -1,6 +1,7 @@
+import random
 import time
 
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox, QFileDialog
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import MainWindow
@@ -16,9 +17,10 @@ from RunAuditAdminWindow import AuditAdminFrame
 from Tools import GetTimeFromTimeStamp, CheckConfig
 from db.optr_logs_Function import GetLogs
 
+import os
 import sys
 import subprocess
-from threading import Thread
+from threading import Thread, Event
 
 class IndexWindow(QWidget):
 
@@ -50,9 +52,11 @@ class IndexWindow(QWidget):
         # 控制线程的标志running 和 子线程
         self.running = False
         self.command = ""
-        self.process = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True,
-                                   text=True)
+        self.process = None
         self.thread_FilePrint = Thread()
+        self.output_list = []
+        self.if_done = False
+        self.exit_flag = False
 
 
 
@@ -92,6 +96,8 @@ class IndexWindow(QWidget):
         self.ui.ScanButton.clicked.connect(self.SwitchToScanningFrameAndScanAll)
         self.ui.KillButton.clicked.connect(self.SwitchToIndexFrame)
         self.ui.CancelScanButton.clicked.connect(self.BlockThread)
+        # self.ui.ProcessButton.clicked.connect(self.SwitchToResultFrame)
+        self.ui.PartScanButton.clicked.connect(self.PickPathScan)
 
 
 
@@ -211,16 +217,19 @@ class IndexWindow(QWidget):
 
     def BlockThread(self):
         # -------阻塞子线程---------
+        print(2)
+        self.exit_flag = True
+        try:
+            self.process.terminate()
+        except Exception as e:
+            print(str(e))
+        print(3)
 
         self.running = False
-
-        if self.thread_FilePrint.is_alive():
-            self.process.terminate()
-            self.thread_FilePrint.join()
+        #
+        # if self.thread_FilePrint.is_alive():
+        #     self.thread_FilePrint.join()
         # -------------------------
-
-
-
     def SwitchToScanningFrameAndScanAll(self):
         self.ui.ScanningFrame.setVisible(True)
         self.ui.ScanningFrame.raise_()
@@ -234,12 +243,12 @@ class IndexWindow(QWidget):
         def run():
             if self.running is True:
                 try:
-                    process = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True,
+                    self.process = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True,
                                                text=True)
                     while True:
-                        line = process.stdout.readline()
-                        if line == '' and process.poll() is not None:
-                            return "Done"
+                        line = self.process.stdout.readline()
+                        if line == '' or self.process.poll() is not None:
+                            print("Done")
                             break
                         self.print_file_signal.emit(line.strip())
                 except Exception as e:
@@ -247,6 +256,50 @@ class IndexWindow(QWidget):
 
         self.thread_FilePrint = Thread(target=run)
         self.thread_FilePrint.start()
+
+
+    def PickPathScan(self):
+        folder_path = QFileDialog.getExistingDirectory(self, "选择文件夹", "")
+        if folder_path:
+            self.ui.ScanningFrame.setVisible(True)
+            self.ui.ScanningFrame.raise_()
+            self.ui.BodyFrame.setVisible(False)
+            self.ui.ResultFrame.setVisible(False)
+
+            # ------自选路径扫描逻辑代码--------------
+            self.running = True
+            self.command = ".\\engine\\clamav\\clamscan.exe " + folder_path.replace("/", "\\\\")
+
+            def run():
+                if self.running is True:
+                    try:
+                        self.process = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                                   shell=True,
+                                                   text=True)
+                        while True:
+                            line = self.process.stdout.readline()
+                            self.output_list.append(line)
+                            if line == '' or self.process.poll() is not None:
+                                print("Done")
+                                break
+                    except Exception as e:
+                        print(str(e))
+                else:
+                    return
+            # def run2():
+            #     if self.running is True:
+            #         for root, _, files in os.walk(folder_path):
+            #             for file in files:
+            #                 file_path = os.path.join(root, file)
+            #                 self.print_file_signal.emit(file_path)
+            #                 time.sleep(random.random())
+            #     else:
+            #         return
+
+            self.thread_FilePrint = Thread(target=run)
+            self.thread_FilePrint.start()
+        else:
+            QMessageBox.information(self, "Error", "路径不存在！")
 
 
 
