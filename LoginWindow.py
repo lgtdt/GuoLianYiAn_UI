@@ -30,9 +30,10 @@ class Ui_LoginWindow(object):
         self.LoginNameLabel = QtWidgets.QLabel(self.TopFrame)
         self.LoginNameLabel.setGeometry(QtCore.QRect(20, 15, 41, 20))
         font = QtGui.QFont()
-        font.setPointSize(17)
+        font.setPointSize(-1)
         self.LoginNameLabel.setFont(font)
-        self.LoginNameLabel.setStyleSheet("background-color: transparent;")
+        self.LoginNameLabel.setStyleSheet("background-color:transparent;\n"
+"font-size:17px;")
         self.LoginNameLabel.setObjectName("LoginNameLabel")
         self.CloseButton = QtWidgets.QPushButton(self.TopFrame)
         self.CloseButton.setGeometry(QtCore.QRect(330, 10, 30, 30))
@@ -54,19 +55,22 @@ class Ui_LoginWindow(object):
         self.TitleLabel = QtWidgets.QLabel(self.BodyFrame)
         self.TitleLabel.setGeometry(QtCore.QRect(79, 20, 221, 29))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(-1)
         font.setBold(False)
         self.TitleLabel.setFont(font)
-        self.TitleLabel.setStyleSheet("color: rgb(0, 0, 0);")
+        self.TitleLabel.setStyleSheet("color: rgb(0, 0, 0);\n"
+"font-size: 18px;\n"
+"")
         self.TitleLabel.setObjectName("TitleLabel")
         self.VersionLabel = QtWidgets.QLabel(self.BodyFrame)
         self.VersionLabel.setGeometry(QtCore.QRect(160, 54, 66, 27))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(-1)
         self.VersionLabel.setFont(font)
         self.VersionLabel.setStyleSheet("color: rgb(43, 128, 247);\n"
 "background-color: rgb(233, 242, 254);\n"
-"border-radius: 13;")
+"border-radius: 13;\n"
+"font-size: 14px;")
         self.VersionLabel.setObjectName("VersionLabel")
         self.UserNameFrame = QtWidgets.QFrame(self.BodyFrame)
         self.UserNameFrame.setGeometry(QtCore.QRect(43, 94, 301, 36))
@@ -108,15 +112,17 @@ class Ui_LoginWindow(object):
         self.LoginButton = QtWidgets.QPushButton(self.BodyFrame)
         self.LoginButton.setGeometry(QtCore.QRect(60, 220, 100, 32))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(-1)
         self.LoginButton.setFont(font)
         self.LoginButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.LoginButton.setStyleSheet("QPushButton{\n"
+"    font-size: 16px;\n"
 "    border: none;\n"
 "    border-radius: 15;\n"
 "    background-color: rgb(43, 128, 247);\n"
 "}\n"
 ":hover{\n"
+"    font-size: 16px;\n"
 "    background-color: rgb(146, 212, 255);\n"
 "}\n"
 "\n"
@@ -126,15 +132,17 @@ class Ui_LoginWindow(object):
         self.QuitButton = QtWidgets.QPushButton(self.BodyFrame)
         self.QuitButton.setGeometry(QtCore.QRect(230, 220, 100, 32))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(-1)
         self.QuitButton.setFont(font)
         self.QuitButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.QuitButton.setStyleSheet("QPushButton{\n"
+"    font-size: 16px;\n"
 "    border: none;\n"
 "    background-color: rgb(246, 41, 41);    \n"
 "    border-radius: 15;\n"
 "}\n"
 ":hover{\n"
+"    font-size: 16px;\n"
 "    background-color: rgb(255, 188, 226);\n"
 "}\n"
 "\n"

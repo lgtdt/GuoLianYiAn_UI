@@ -81,12 +81,13 @@ border: none;</string>
       <property name="font">
        <font>
         <family>YouSheBiaoTiHei</family>
-        <pointsize>35</pointsize>
+        <pointsize>-1</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-</string>
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: transparent;
+font-size:35px;</string>
       </property>
       <property name="text">
        <string>国联易安</string>
@@ -103,13 +104,14 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>-1</pointsize>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.505682, stop:0 rgba(250, 193, 31, 255), stop:1 rgba(252, 228, 4, 255));
 color: rgb(156, 69, 21);
-border-radius: 10;</string>
+border-radius: 10;
+font-size:13px;</string>
       </property>
       <property name="text">
        <string>  (主机版) V2.0 </string>
@@ -127,8 +129,12 @@ border-radius: 10;</string>
       <property name="font">
        <font>
         <family>YouSheBiaoTiHei</family>
-        <pointsize>18</pointsize>
+        <pointsize>-1</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+font-size:19px;</string>
       </property>
       <property name="text">
        <string>恶意代码辅助监测系统</string>
@@ -225,7 +231,8 @@ background-color: qlineargradient(spread:pad, x1:0.985075, y1:1, x2:1, y2:0, sto
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;</string>
+       <string notr="true">font-size:13px;
+background-color: transparent;</string>
       </property>
       <property name="text">
        <string>系统设置</string>
@@ -241,7 +248,8 @@ background-color: qlineargradient(spread:pad, x1:0.985075, y1:1, x2:1, y2:0, sto
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;</string>
+       <string notr="true">background-color: transparent;
+font-size:13px;</string>
       </property>
       <property name="text">
        <string>用户管理</string>
@@ -590,7 +598,7 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -598,7 +606,9 @@ border-radius: 20;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(67, 126, 239);
-border-radius:10;</string>
+border-radius:10;
+font-size:18px;
+</string>
        </property>
        <property name="text">
         <string>病毒查杀</string>
@@ -615,7 +625,7 @@ border-radius:10;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -623,7 +633,7 @@ border-radius:10;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:transparent;
-</string>
+font-size:18px;</string>
        </property>
        <property name="text">
         <string>产品授权</string>
@@ -660,8 +670,11 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>扫描类型：</string>
@@ -678,8 +691,11 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>处理方式：</string>
@@ -690,14 +706,17 @@ border-radius: 20;</string>
         <rect>
          <x>60</x>
          <y>170</y>
-         <width>81</width>
+         <width>91</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>扫描压缩包：</string>
@@ -714,14 +733,15 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">background-color:transparent;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>扫描PUA</string>
@@ -732,20 +752,21 @@ border-radius: 20;</string>
         <rect>
          <x>300</x>
          <y>20</y>
-         <width>111</width>
+         <width>121</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">background-color:transparent;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>递归扫描目录</string>
@@ -756,20 +777,21 @@ border-radius: 20;</string>
         <rect>
          <x>170</x>
          <y>50</y>
-         <width>151</width>
+         <width>171</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">background-color:transparent;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>扫描大于20M的文件</string>
@@ -786,11 +808,14 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>手动处理</string>
@@ -807,11 +832,14 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>自动处理</string>
@@ -822,20 +850,21 @@ border-radius: 20;</string>
         <rect>
          <x>170</x>
          <y>170</y>
-         <width>131</width>
+         <width>141</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">background-color:transparent;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>进入压缩包扫描</string>
@@ -846,20 +875,21 @@ border-radius: 20;</string>
         <rect>
          <x>170</x>
          <y>120</y>
-         <width>261</width>
+         <width>291</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">background-color:transparent;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>清除病毒前自动备份至恢复区（推荐）</string>
@@ -877,8 +907,12 @@ border-radius: 20;</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>22</pointsize>
+        <pointsize>-1</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:25px;
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>系统设置</string>
@@ -914,8 +948,11 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>机器码：</string>
@@ -932,11 +969,12 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);</string>
+        <string notr="true">background-color: rgb(170, 170, 170);
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>ABCDE12345ABCDE12345ABCDE12345</string>
@@ -953,8 +991,11 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>产品授权：</string>
@@ -965,14 +1006,18 @@ border-radius: 20;</string>
         <rect>
          <x>170</x>
          <y>70</y>
-         <width>61</width>
+         <width>71</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;
+</string>
        </property>
        <property name="text">
         <string>已经试用</string>
@@ -981,7 +1026,7 @@ border-radius: 20;</string>
       <widget class="QLabel" name="TryDaysNumberLabel">
        <property name="geometry">
         <rect>
-         <x>240</x>
+         <x>250</x>
          <y>70</y>
          <width>16</width>
          <height>21</height>
@@ -989,8 +1034,11 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>7</string>
@@ -999,16 +1047,19 @@ border-radius: 20;</string>
       <widget class="QLabel" name="label_13">
        <property name="geometry">
         <rect>
-         <x>260</x>
+         <x>270</x>
          <y>70</y>
-         <width>121</width>
+         <width>141</width>
          <height>21</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-size:16px;</string>
        </property>
        <property name="text">
         <string>天，请导出机器码！</string>
@@ -1025,7 +1076,7 @@ border-radius: 20;</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>15</pointsize>
+         <pointsize>-1</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -1033,7 +1084,8 @@ border-radius: 20;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(67, 126, 239);
-border-radius:10;</string>
+border-radius:10;
+font-size:16px;</string>
        </property>
        <property name="text">
         <string>导入产品授权</string>
@@ -1042,8 +1094,8 @@ border-radius:10;</string>
      </widget>
      <zorder>LeftFrame</zorder>
      <zorder>label</zorder>
-     <zorder>AuthorizeRightFrame</zorder>
      <zorder>SacnSetRightFrame</zorder>
+     <zorder>AuthorizeRightFrame</zorder>
     </widget>
     <widget class="QFrame" name="UserManageFrame">
      <property name="geometry">
@@ -1116,8 +1168,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>序号</string>
@@ -1134,8 +1189,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>用户名</string>
@@ -1152,8 +1210,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>账号类型</string>
@@ -1170,8 +1231,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>帐号解锁</string>
@@ -1188,8 +1252,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>更新周期</string>
@@ -1206,8 +1273,11 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>-1</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:15px;</string>
         </property>
         <property name="text">
          <string>重置密码</string>
@@ -1243,11 +1313,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>1</string>
@@ -1264,11 +1335,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>SecAdmin</string>
@@ -1285,11 +1357,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>安全保密管理员</string>
@@ -1306,11 +1379,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>已逾期</string>
@@ -1327,7 +1401,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1336,7 +1410,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>解锁</string>
@@ -1353,7 +1428,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1362,7 +1437,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>重置</string>
@@ -1398,11 +1474,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>2</string>
@@ -1419,11 +1496,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>AuditAdmin</string>
@@ -1440,11 +1518,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>审计管理员</string>
@@ -1461,11 +1540,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>已逾期</string>
@@ -1482,7 +1562,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1491,7 +1571,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>解锁</string>
@@ -1508,7 +1589,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1517,7 +1598,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>重置</string>
@@ -1553,11 +1635,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>3</string>
@@ -1574,11 +1657,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>Admin</string>
@@ -1595,11 +1679,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>普通用户</string>
@@ -1616,11 +1701,12 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color:black;</string>
+         <string notr="true">color:black;
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>已逾期</string>
@@ -1637,7 +1723,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1646,7 +1732,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>解锁</string>
@@ -1663,7 +1750,7 @@ border-radius: 20;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>-1</pointsize>
           <bold>true</bold>
           <underline>true</underline>
          </font>
@@ -1672,7 +1759,8 @@ border-radius: 20;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(67, 126, 239);</string>
+         <string notr="true">color: rgb(67, 126, 239);
+font-size:13px;</string>
         </property>
         <property name="text">
          <string>重置</string>
@@ -1691,14 +1779,20 @@ border-radius: 20;</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>22</pointsize>
+        <pointsize>-1</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:25px;
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>用户管理</string>
       </property>
      </widget>
     </widget>
+    <zorder>UserManageFrame</zorder>
+    <zorder>SysSetFrame</zorder>
    </widget>
    <widget class="QFrame" name="BottomFrame">
     <property name="geometry">
@@ -1730,11 +1824,12 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:transparent;</string>
+      <string notr="true">background-color:transparent;
+font-size:10px;</string>
      </property>
      <property name="text">
       <string>产品授权:</string>
@@ -1751,11 +1846,12 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:transparent;</string>
+      <string notr="true">background-color:transparent;
+font-size:10px;</string>
      </property>
      <property name="text">
       <string>产品版本:</string>
@@ -1772,11 +1868,12 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:transparent;</string>
+      <string notr="true">background-color:transparent;
+font-size:10px;</string>
      </property>
      <property name="text">
       <string>2.0.0.05041735</string>
@@ -1793,11 +1890,12 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>10</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:transparent;</string>
+      <string notr="true">background-color:transparent;
+font-size:10px;</string>
      </property>
      <property name="text">
       <string>未授权</string>

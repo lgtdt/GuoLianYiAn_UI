@@ -1521,9 +1521,9 @@ font-size:13px;</string>
    </widget>
    <zorder>BottomFrame</zorder>
    <zorder>TopFrame</zorder>
-   <zorder>BodyFrame</zorder>
    <zorder>ScanningFrame</zorder>
    <zorder>ResultFrame</zorder>
+   <zorder>BodyFrame</zorder>
   </widget>
  </widget>
  <resources/>

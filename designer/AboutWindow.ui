@@ -58,11 +58,12 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>17</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: transparent;</string>
+      <string notr="true">background-color: transparent;
+font-size:17px;</string>
      </property>
      <property name="text">
       <string>关于</string>
@@ -128,12 +129,13 @@ border:none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>22</pointsize>
+       <pointsize>-1</pointsize>
        <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(0, 0, 0);</string>
+      <string notr="true">color: rgb(0, 0, 0);
+font-size:22px;</string>
      </property>
      <property name="text">
       <string>国联恶意代码辅助监测系统</string>
@@ -150,13 +152,14 @@ border:none;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(43, 128, 247);
 background-color: rgb(233, 242, 254);
-border-radius: 13;</string>
+border-radius: 13;
+font-size:14px;</string>
      </property>
      <property name="text">
       <string>   主机版V2.0</string>
@@ -173,11 +176,12 @@ border-radius: 13;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>16</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(89, 164, 255);</string>
+      <string notr="true">color: rgb(89, 164, 255);
+font-size:16px;</string>
      </property>
      <property name="text">
       <string>高级威胁防护，恶意代码查杀，专业防护</string>
@@ -194,11 +198,12 @@ border-radius: 13;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: grey;</string>
+      <string notr="true">color: grey;
+font-size:15px;</string>
      </property>
      <property name="text">
       <string>产品版本：</string>
@@ -215,11 +220,12 @@ border-radius: 13;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: grey;</string>
+      <string notr="true">color: grey;
+font-size:15px;</string>
      </property>
      <property name="text">
       <string>本地病毒库版本：</string>
@@ -236,11 +242,12 @@ border-radius: 13;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: grey;</string>
+      <string notr="true">color: grey;
+font-size:15px;</string>
      </property>
      <property name="text">
       <string>2.0.0.05041735</string>
@@ -257,11 +264,12 @@ border-radius: 13;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>-1</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: grey;</string>
+      <string notr="true">color: grey;
+font-size:15px;</string>
      </property>
      <property name="text">
       <string>20220920</string>
