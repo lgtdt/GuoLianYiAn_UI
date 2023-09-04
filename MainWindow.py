@@ -476,6 +476,25 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("font-size:13px;\n"
 "background-color: transparent;")
         self.label_6.setObjectName("label_6")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.BugListFrame)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 50, 801, 301))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.scrollArea = QtWidgets.QScrollArea(self.verticalLayoutWidget)
+        self.scrollArea.setStyleSheet("background-color: transparent;\n"
+"border-top-left-radius: 0px;\n"
+" border-top-right-radius: 0px;\n"
+" border-bottom-left-radius: 15px; \n"
+"border-bottom-right-radius: 15px;")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 799, 299))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_2.addWidget(self.scrollArea)
         self.BottomFrame = QtWidgets.QFrame(self.BackGroundFrame)
         self.BottomFrame.setGeometry(QtCore.QRect(0, 120, 900, 480))
         self.BottomFrame.setStyleSheet("background-color: qradialgradient(spread:pad, cx:0, cy:1, radius:1.02262, fx:0, fy:1, stop:0 rgba(60, 86, 222, 255), stop:0.995025 rgba(138, 206, 253, 250));\n"
@@ -568,9 +587,9 @@ class Ui_MainWindow(object):
         self.ProcessNumberLabel.setObjectName("ProcessNumberLabel")
         self.BottomFrame.raise_()
         self.TopFrame.raise_()
-        self.ResultFrame.raise_()
         self.BodyFrame.raise_()
         self.ScanningFrame.raise_()
+        self.ResultFrame.raise_()
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
