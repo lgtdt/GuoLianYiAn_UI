@@ -1,9 +1,9 @@
 import random
 import time
 
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox, QFileDialog, QHBoxLayout, QVBoxLayout, QFrame, QLabel, QPushButton
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QPainterPath, QRegion
+from PyQt5.QtGui import QPainterPath, QRegion, QPixmap
 import MainWindow
 from RunLoginWindow import LoginFrame
 from RunLogoutWindow import LogoutFrame
@@ -54,9 +54,15 @@ class IndexWindow(QWidget):
         self.command = ""
         self.process = None
         self.thread_FilePrint = Thread()
-        self.output_list = []
         self.if_done = False
         self.exit_flag = False
+        self.viurs_file = [
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\testttttttttttttt"},
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_"},
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
+        ]
 
 
 
@@ -96,7 +102,7 @@ class IndexWindow(QWidget):
         self.ui.ScanButton.clicked.connect(self.SwitchToScanningFrameAndScanAll)
         self.ui.KillButton.clicked.connect(self.SwitchToIndexFrame)
         self.ui.CancelScanButton.clicked.connect(self.BlockThread)
-        # self.ui.ProcessButton.clicked.connect(self.SwitchToResultFrame)
+        self.ui.ProcessButton.clicked.connect(self.SwitchToResultFrame)
         self.ui.PartScanButton.clicked.connect(self.PickPathScan)
 
 
@@ -302,6 +308,111 @@ class IndexWindow(QWidget):
             QMessageBox.information(self, "Error", "路径不存在！")
 
 
+
+    def SwitchToResultFrame(self):
+        self.ui.ResultFrame.show()
+        self.ui.scrollArea.setWidgetResizable(True)
+        container_widget = QWidget(self)
+        container_layout = QVBoxLayout(container_widget)
+        try:
+            for virus in self.viurs_file:
+                #row_layout 用于填充每行的元素
+                row_layout = QHBoxLayout()
+                row_layout.addSpacing(30)
+
+                #填充图标
+                icon_label = QLabel(self)
+                pixmap = QPixmap("./statics/imgs/right.png")
+                icon_label.setPixmap(pixmap.scaled(19, 19))
+                icon_label.setFixedSize(19, 19)
+                row_layout.addWidget(icon_label)
+
+                #填充病毒文件名和路径
+                virus_widget = QWidget(self)
+                virus_display = QVBoxLayout(virus_widget)
+                virus_widget.setFixedSize(330, 60)
+                virus_widget.setStyleSheet('''
+                    background-color : transparent;
+                ''')
+                vname_label = QLabel(virus["name"], self)
+                vname_label.setStyleSheet('''
+                    color: white;
+                ''')
+                vpath_label = QLabel(virus["path"], self)
+                vpath_label.setStyleSheet('''
+                    color: rgb(0, 104, 139);
+                ''')
+                virus_display.addWidget(vname_label)
+                virus_display.addWidget(vpath_label)
+                row_layout.addWidget(virus_widget)
+
+                #病毒类型
+                type_name = " 黑客工具"
+                virus_type = QLabel(type_name, self)
+                virus_type.setFixedSize(75, 22)
+                virus_type.setStyleSheet('''
+                    background-color: orange;
+                    font-size: 15px;
+                    border-radius: 10px;
+                    color: white;
+                ''')
+                row_layout.addWidget(virus_type)
+                row_layout.addSpacing(170)
+
+                #按钮
+                button1 = QPushButton("详情", self)
+                button1.setCursor(Qt.PointingHandCursor)
+                button1.setStyleSheet('''
+                    color: rgb(0, 104, 139);
+                ''')
+                button2 = QPushButton("信任", self)
+                button2.setCursor(Qt.PointingHandCursor)
+                button2.setStyleSheet('''
+                    color: rgb(0, 104, 139);
+                ''')
+                row_layout.addWidget(button1)
+                row_layout.addWidget(button2)
+                row_layout.addSpacing(30)
+
+                #分割线
+                line = QFrame()
+                line.setFrameShape(QFrame.HLine)
+                line.setStyleSheet('''
+                    border: 1px  #CCCCCC;
+                    background-color:  #CCCCCC;
+                ''')
+
+                container_layout.addLayout(row_layout)
+                container_layout.addWidget(line)
+                container_layout.setSpacing(10)
+
+        except Exception as e:
+            print(str(e))
+
+
+        self.ui.scrollArea.setWidget(container_widget)
+        self.ui.scrollArea.setStyleSheet('''
+            QScrollBar:vertical {
+                border: 2px solid grey;
+                background: lightgrey;
+                border-radius: 5px;
+                width: 0px;
+                margin: 22px 0 22px 0;
+            }
+            QScrollBar::handle:vertical {
+                background: grey;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+
+            QScrollBar::add-line:vertical {
+                background: none;
+            }
+
+            QScrollBar::sub-line:vertical {
+                background: none;
+            }
+        ''')
 
 
 
