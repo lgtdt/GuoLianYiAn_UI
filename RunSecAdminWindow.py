@@ -4,6 +4,7 @@ from PyQt5.QtGui import QPainterPath, QRegion
 import SecAdminWindow
 from db.optr_logs_Function import GetLogs
 from db.password_policy_Function import Save_Password_Policy, Get_Password_Policy
+from db.UserManager_Function import ResetUserPasswd, UnLockUser
 from Tools import GetTimeFromTimeStamp
 
 import sys
@@ -11,9 +12,10 @@ import datetime
 
 
 class SecAdminFrame(QWidget):
-
+    UserName = "secadmin"
     #自定义信号
     show_logoutFrame_signal = pyqtSignal(str)
+    resetPass_signal = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
@@ -48,6 +50,7 @@ class SecAdminFrame(QWidget):
         self.ui.MoreMenuFrame.setVisible(False)
         self.ui.CloseButton.clicked.connect(self.CloseWindow)
         self.ui.SetButtuon.clicked.connect(self.OpenMoreMenu)
+        self.ui.ChangePassButton.clicked.connect(self.OpenResetPassWindow)
         self.ui.LogoutButton.clicked.connect(self.ShowLogoutFrame)
         self.ui.KillButton.clicked.connect(self.ShowKillFrame)
         self.ui.ToolsButton.clicked.connect(self.ShowSecToolsFrame)
@@ -55,6 +58,8 @@ class SecAdminFrame(QWidget):
         self.ui.LogButton.clicked.connect(self.ShowLogFrame)
         self.ui.SysSetButton.clicked.connect(self.ShowSysSetFrame)
         self.ui.SaveButton.clicked.connect(self.SavePassPolicy)
+        self.ui.ResetButton1.clicked.connect(self.ResetSysPass)
+        self.ui.UnlockButton1.clicked.connect(self.UnlockSysAdmin)
 
 
     def mousePressEvent(self, event):
@@ -77,7 +82,10 @@ class SecAdminFrame(QWidget):
             self.ifMoreMenuOpen = False
 
     def OpenResetPassWindow(self):
-        self.resetPassFrame.show()
+        try:
+            self.resetPass_signal.emit(self.UserName)
+        except Exception as e:
+            print(str(e))
     def OpenAboutWindow(self):
         self.aboutFrame.show()
 
@@ -240,6 +248,20 @@ class SecAdminFrame(QWidget):
             QMessageBox.information(self, "Success", "保存成功!")
         else:
             QMessageBox.critical(self, "Error", f"Error updating record: {result}")
+
+    def ResetSysPass(self):
+        try:
+            ResetUserPasswd("sysadmin")
+            QMessageBox.information(self, "Success", "密码重置成功！")
+        except Exception as e:
+            print(str(e))
+    def UnlockSysAdmin(self):
+        try:
+            UnLockUser("sysadmin")
+            QMessageBox.information(self, "Success", "用户解锁成功！")
+        except Exception as e:
+            print(str(e))
+
 
 
 

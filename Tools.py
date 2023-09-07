@@ -2,6 +2,7 @@ import hashlib
 import subprocess
 import  datetime
 import os
+from db.password_policy_Function import Get_Password_Policy
 
 def md5_encrypt(input):
     md5_obj = hashlib.md5()
@@ -29,6 +30,30 @@ def CheckConfig():
         return "Could not find the config file.Please check."
     else:
         return "success"
+def CheckPass(password):
+    pass_policy = Get_Password_Policy()
+    upper_num = pass_policy[0]
+    lower_num = pass_policy[1]
+    symbol_num = pass_policy[2]
+    digit_num = pass_policy[3]
+    min_len_num = pass_policy[4]
+
+    upper, lower, symbol, digit, len = 0, 0, 0, 0, 0
+    special_characters = "!@#$%^&*()_+-=[]{}|;:'\",.<>?`~"
+    for char in password:
+        if char.isupper():
+            upper += 1
+        if char.islower():
+            lower += 1
+        if char.isdigit():
+            digit += 1
+        if char in special_characters:
+            symbol += 1
+        len += 1
+    if(upper >= upper_num and lower >= lower_num and symbol >= symbol_num and digit >= digit_num and len >= min_len_num):
+        return True
+    else:
+        return False
 
 
 def execute_Command_Realtime(command):

@@ -7,9 +7,10 @@ import sys
 
 
 class SysAdminFrame(QWidget):
-
+    UserName = 'sysadmin'
     #自定义信号
     show_logoutFrame_signal = pyqtSignal(str)
+    resetPass_signal = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
@@ -42,11 +43,13 @@ class SysAdminFrame(QWidget):
         self.ui.MoreMenuFrame.setVisible(False)
         self.ui.CloseButton.clicked.connect(self.CloseWindow)
         self.ui.SetButtuon.clicked.connect(self.OpenMoreMenu)
+        self.ui.ChangePassButton.clicked.connect(self.OpenResetPassWindow)
         self.ui.UserButton.clicked.connect(self.ShowUserManageFrame)
         self.ui.SysSetButton.clicked.connect(self.ShowSysSetFrame)
         self.ui.ScanSetButton.clicked.connect(self.ShowScanSetFrame)
         self.ui.AuthorizeSetButton.clicked.connect(self.ShowAuthorizeSetFrame)
         self.ui.LogoutButton.clicked.connect(self.ShowLogoutFrame)
+
 
 
     def mousePressEvent(self, event):
@@ -69,7 +72,10 @@ class SysAdminFrame(QWidget):
             self.ifMoreMenuOpen = False
 
     def OpenResetPassWindow(self):
-        self.resetPassFrame.show()
+        try:
+            self.resetPass_signal.emit(self.UserName)
+        except Exception as e:
+            print(str(e))
     def OpenAboutWindow(self):
         self.aboutFrame.show()
 
