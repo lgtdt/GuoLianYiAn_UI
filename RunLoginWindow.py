@@ -15,6 +15,7 @@ class LoginFrame(QWidget):
     show_SysAdminFrame_signal = pyqtSignal()
     login_singnal = pyqtSignal(str)
     print_lefttime_signal = pyqtSignal(str)
+    showResetPass_signal = pyqtSignal(str)
 
     # 控制倒计时线程的标志running 和 三个用户线程
     running = False
@@ -108,9 +109,13 @@ class LoginFrame(QWidget):
             else:
                 true_passwd = GetPasswd("sysadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
-                    self.login_singnal.emit("sysadmin")
-                    LoginSuccess("sysadmin")
-                    self.close()
+                    if (true_passwd == "e10adc3949ba59abbe56e057f20f883e"):  # 若登录时密码为初始密码，则跳转修改密码
+                        self.showResetPass_signal.emit("sysadmin")
+                        self.close()
+                    else:
+                        self.login_singnal.emit("sysadmin")
+                        LoginSuccess("sysadmin")
+                        self.close()
                 else:
                     WrongPassFunc("sysadmin")
                     self.ui.MessageLabel2.setVisible(True)
@@ -130,9 +135,13 @@ class LoginFrame(QWidget):
             else:
                 true_passwd = GetPasswd("secadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
-                    self.login_singnal.emit("secadmin")
-                    LoginSuccess("secadmin")
-                    self.close()
+                    if(true_passwd == "e10adc3949ba59abbe56e057f20f883e"): # 若登录时密码为初始密码，则跳转修改密码
+                        self.showResetPass_signal.emit("secadmin")
+                        self.close()
+                    else:
+                        self.login_singnal.emit("secadmin")
+                        LoginSuccess("secadmin")
+                        self.close()
                 else:
                     WrongPassFunc("secadmin")
                     self.ui.MessageLabel2.setVisible(True)
@@ -153,9 +162,13 @@ class LoginFrame(QWidget):
             else:
                 true_passwd = GetPasswd("auditadmin")
                 if if_Passwd_Right(input_passwd, true_passwd) == True:
-                    self.login_singnal.emit("auditadmin")
-                    LoginSuccess("auditadmin")
-                    self.close()
+                    if (true_passwd == "e10adc3949ba59abbe56e057f20f883e"):  # 若登录时密码为初始密码，则跳转修改密码
+                        self.showResetPass_signal.emit("auditadmin")
+                        self.close()
+                    else:
+                        self.login_singnal.emit("auditadmin")
+                        LoginSuccess("auditadmin")
+                        self.close()
                 else:
                     WrongPassFunc("auditadmin")
                     self.ui.MessageLabel2.setVisible(True)

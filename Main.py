@@ -79,10 +79,15 @@ class IndexWindow(QWidget):
 
         # 自定义槽
         self.loginFrame.login_singnal.connect(self.logToOtherWindow)
+        self.loginFrame.showResetPass_signal.connect(self.OpenResetPassWindow)
         self.logoutFrame.logout_signal.connect(self.logout)
+        self.resetPassFrame.resetSuccess_signal.connect(self.logToOtherWindow)
         self.sysAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
+        self.sysAdminFrame.resetPass_signal.connect(self.OpenResetPassWindow)
         self.secAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
+        self.secAdminFrame.resetPass_signal.connect(self.OpenResetPassWindow)
         self.auditAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
+        self.auditAdminFrame.resetPass_signal.connect(self.OpenResetPassWindow)
         self.print_file_signal.connect(self.File_Print_Slot)
 
 
@@ -212,8 +217,9 @@ class IndexWindow(QWidget):
             self.ui.MoreMenuFrame.setVisible(False)
             self.ifMoreMenuOpen = False
 
-    def OpenResetPassWindow(self):
+    def OpenResetPassWindow(self, name):
         self.resetPassFrame.show()
+        self.resetPassFrame.resetUserName = name
     def OpenAboutWindow(self):
         self.aboutFrame.show()
 
