@@ -1,9 +1,10 @@
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QMessageBox, QWidget
 from PyQt5.QtCore import Qt, QPoint, QRectF, QPropertyAnimation, QObject, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QPainterPath, QRegion
 import SysAdminWindow
 
 import sys
+from db.UserManager_Function import ResetUserPasswd, UnLockUser
 
 
 class SysAdminFrame(QWidget):
@@ -49,6 +50,12 @@ class SysAdminFrame(QWidget):
         self.ui.ScanSetButton.clicked.connect(self.ShowScanSetFrame)
         self.ui.AuthorizeSetButton.clicked.connect(self.ShowAuthorizeSetFrame)
         self.ui.LogoutButton.clicked.connect(self.ShowLogoutFrame)
+        self.ui.SecResetButton.clicked.connect(self.ResetSecPass)
+        self.ui.AdminResetButton.clicked.connect(self.ResetAdminPass)
+        self.ui.AuditResetButton.clicked.connect(self.ResetAuditPass)
+        self.ui.AdminUnlockButton.clicked.connect(self.UnlockAdmin)
+        self.ui.SecUnlockButton.clicked.connect(self.UnlockSec)
+        self.ui.AuditUnlockButton.clicked.connect(self.UnlockAudit)
 
 
 
@@ -124,6 +131,44 @@ class SysAdminFrame(QWidget):
         self.ui.SacnSetRightFrame.setVisible(False)
         self.ui.SacnSetRightFrame.raise_()
         self.ui.AuthorizeRightFrame.setVisible(True)
+
+    def ResetSecPass(self):
+        try:
+            ResetUserPasswd("secadmin")
+            QMessageBox.information(self, "Success", "密码重置成功！")
+        except Exception as e:
+            print(str(e))
+    def ResetAdminPass(self):
+        try:
+            ResetUserPasswd("admin")
+            QMessageBox.information(self, "Success", "密码重置成功！")
+        except Exception as e:
+            print(str(e))
+    def ResetAuditPass(self):
+        try:
+            ResetUserPasswd("auditadmin")
+            QMessageBox.information(self, "Success", "密码重置成功！")
+        except Exception as e:
+            print(str(e))
+    def UnlockAdmin(self):
+        try:
+            UnLockUser("admin")
+            QMessageBox.information(self, "Success", "用户解锁成功！")
+        except Exception as e:
+            print(str(e))
+    def UnlockSec(self):
+        try:
+            UnLockUser("secadmin")
+            QMessageBox.information(self, "Success", "用户解锁成功！")
+        except Exception as e:
+            print(str(e))
+    def UnlockAudit(self):
+        try:
+            UnLockUser("auditadmin")
+            QMessageBox.information(self, "Success", "用户解锁成功！")
+        except Exception as e:
+            print(str(e))
+
 
     def ShowLogoutFrame(self):
         self.show_logoutFrame_signal.emit("sysadmin")

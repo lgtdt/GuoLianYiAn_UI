@@ -1791,8 +1791,6 @@ color: rgb(255, 255, 255);</string>
       </property>
      </widget>
     </widget>
-    <zorder>UserManageFrame</zorder>
-    <zorder>SysSetFrame</zorder>
    </widget>
    <widget class="QFrame" name="BottomFrame">
     <property name="geometry">

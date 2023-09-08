@@ -4,11 +4,13 @@ from PyQt5.QtGui import QPainterPath, QRegion
 import LogoutWindow
 
 
-from Tools import md5_encrypt
+from Tools import md5_encrypt, if_Passwd_Right
+from db.UserManager_Function import GetPasswd
 import sys
 
 class LogoutFrame(QWidget):
 
+    logoutUser = ""
     # 自定义信号
     logout_signal = pyqtSignal()
     # close_SysAdminFrame_signal = pyqtSignal()
@@ -47,6 +49,18 @@ class LogoutFrame(QWidget):
         self.close()
 
     def LogoutFunc(self):
-        self.logout_signal.emit()
+
+        try:
+            passwd = self.ui.PasswordInput.text()
+            true_passwd = GetPasswd(self.logoutUser)
+            if (if_Passwd_Right(md5_encrypt(passwd), true_passwd)):
+                self.logout_signal.emit()
+                self.close()
+            else:
+                self.ui.MessageLabel.setText("密码错误")
+                self.ui.MessageLabel.setVisible(True)
+        except Exception as e:
+            print(str(e))
+
+
         # self.close_SysAdminFrame_signal.emit()
-        self.close()
