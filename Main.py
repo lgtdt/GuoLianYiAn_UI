@@ -26,6 +26,7 @@ class IndexWindow(QWidget):
 
     #自定义信号
     print_file_signal = pyqtSignal(str)
+    print_processNum_signal = pyqtSignal(str)
 
 
     def __init__(self):
@@ -53,12 +54,16 @@ class IndexWindow(QWidget):
         self.running = False
         self.command = ""
         self.process = None
+        self.thread_Core = Thread()
         self.thread_FilePrint = Thread()
+        self.thread_ProcessNum = Thread()
         self.if_done = False
         self.exit_flag = False
+        self.output_list = []
         self.viurs_file = [
             {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\testttttttttttttt"},
             {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_"},
+            {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
             {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
             {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
             {"name": "clam.exe", "path": "W:\python\GuoLianYiAn_UI\\virus\\test"},
@@ -89,6 +94,7 @@ class IndexWindow(QWidget):
         self.auditAdminFrame.show_logoutFrame_signal.connect(self.ShowLogoutFrame)
         self.auditAdminFrame.resetPass_signal.connect(self.OpenResetPassWindow)
         self.print_file_signal.connect(self.File_Print_Slot)
+        self.print_processNum_signal.connect(self.ProcessNum_Print_Slot)
 
 
     def init_ui(self):
@@ -166,6 +172,7 @@ class IndexWindow(QWidget):
         self.logoutFrame.ui.MessageLabel.setVisible(False)
         self.logoutFrame.show()
         self.logoutName = name
+        self.logoutFrame.logoutUser = name
     def logout(self):
         self.show()
         if self.logoutName == "sysadmin":
@@ -226,6 +233,8 @@ class IndexWindow(QWidget):
     def File_Print_Slot(self, file_path):
         self.ui.FilePathLabel.setVisible(True)
         self.ui.FilePathLabel.setText(file_path)
+    def ProcessNum_Print_Slot(self, str):
+        self.ui.ProcessNumberLabel.setText(str)
 
     def BlockThread(self):
         # -------阻塞子线程---------
@@ -238,9 +247,6 @@ class IndexWindow(QWidget):
         print(3)
 
         self.running = False
-        #
-        # if self.thread_FilePrint.is_alive():
-        #     self.thread_FilePrint.join()
         # -------------------------
     def SwitchToScanningFrameAndScanAll(self):
         self.ui.ScanningFrame.setVisible(True)
@@ -266,8 +272,8 @@ class IndexWindow(QWidget):
                 except Exception as e:
                     print(str(e))
 
-        self.thread_FilePrint = Thread(target=run)
-        self.thread_FilePrint.start()
+        self.thread_Core = Thread(target=run)
+        self.thread_Core.start()
 
 
     def PickPathScan(self):
@@ -292,24 +298,49 @@ class IndexWindow(QWidget):
                             line = self.process.stdout.readline()
                             self.output_list.append(line)
                             if line == '' or self.process.poll() is not None:
+                                for line in self.output_list:
+                                    print(line)
                                 print("Done")
                                 break
                     except Exception as e:
                         print(str(e))
                 else:
                     return
-            # def run2():
-            #     if self.running is True:
-            #         for root, _, files in os.walk(folder_path):
-            #             for file in files:
-            #                 file_path = os.path.join(root, file)
-            #                 self.print_file_signal.emit(file_path)
-            #                 time.sleep(random.random())
-            #     else:
-            #         return
 
-            self.thread_FilePrint = Thread(target=run)
+            def run2():
+                try:
+                    if self.running is True:
+                        for root, _, files in os.walk(folder_path):
+                            for file in files:
+                                file_path = os.path.join(root, file)
+                                self.print_file_signal.emit(file_path)
+                                time.sleep(random.random())
+                    else:
+                        return
+                except Exception as e:
+                    print(str(e))
+
+            def run3():
+                try:
+                    if self.running is True:
+                        process_num = 1
+
+                        while(process_num <= 100):
+                            self.print_processNum_signal.emit(f"{process_num}%")
+                            time.sleep(random.random())
+                            process_num += 1
+                    else:
+                        return
+                except Exception as e:
+                    print(str(e))
+
+
+            self.thread_FilePrint = Thread(target=run2)
+            self.thread_Core = Thread(target=run)
+            self.thread_ProcessNum = Thread(target=run3)
+            self.thread_Core.start()
             self.thread_FilePrint.start()
+            self.thread_ProcessNum.start()
         else:
             QMessageBox.information(self, "Error", "路径不存在！")
 
